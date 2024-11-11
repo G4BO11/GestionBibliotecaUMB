@@ -6,10 +6,10 @@ import Layout from '@layouts/Layout.astro';
 		<header class="flex w-full py-4 px-4">
 			<h1 class="text-white text-xl">Biblioteca UN</h1>
 		</header>
-		<main class="main-container relative w-full gap-6 h-full">
-			<div class="main-container--child bg-slate-300 rounded-lg">
-				<h2 class="font-bold text-slate-300">Aulas</h2>
-			</div>
+		<main transition:animate="fade" class="main-container relative w-full gap-6 h-full">
+			<a href="./Aulas" class="main-container--child bg-slate-300 rounded-lg" transition:name="contAula">
+				<h2 class="font-bold text-slate-300" transition:name="nameAula">Aulas</h2>
+			</a>
 			<div class="main-container--child bg-slate-300 rounded-lg">
 				<h2 class="font-bold text-slate-300">Libros</h2>
 			</div>
