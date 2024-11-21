@@ -1,0 +1,106 @@
+---
+import CalendarMonth from "@icons/CalendarMonth.astro";
+import ClockCalendarIcon from "@icons/ClockCalendarIcon.astro";
+import CubeIcon from "@icons/CubeIcon.astro";
+import GroupIcon from "@icons/GroupIcon.astro";
+---
+<dialog id="modalConfirmReservation" class="z-10 w-[600px] h-[372px] rounded-lg backdrop:backdrop-blur-md backdrop:bg-slate-900/70 bg-slate-800/80 fixed inset-0 p-4 overflow-visible">
+   <section class="flex w-full h-full gap-5">
+     <!-- carnet -->
+    <div class="w-[280px] h-[400px] bg-white relative -top-7 rounded-lg -rotate-2 grid place-content-center">
+     <p class="">Componente Carnet</p>
+    </div>
+    <!-- Panel derecho con info -->
+    <div class="flex flex-col grow gap-3">
+      <h2 class="font-semibold text-xl text-center text-white">Tu reserva</h2>
+      <div class="continfoReservas">
+       <span class="continfoReserva--item">
+        <div class="iteminforeserva-icono rounded-md grid place-content-center p-2">
+            <CalendarMonth />
+        </div>
+        <div class="iteminforeserva-texto">
+            <p>Día:</p>
+            <p>18 de Noviembre</p>
+        </div>
+       </span>
+       <span class="continfoReserva--item">
+         <div class="iteminforeserva-icono rounded-md grid place-content-center p-2">
+             <ClockCalendarIcon />
+         </div>
+         <div class="iteminforeserva-texto">
+             <p>Hora:</p>
+             <p>10:00 a 12:00</p>
+         </div>
+       </span>
+       <span class="continfoReserva--item">
+         <div class="iteminforeserva-icono rounded-md grid place-content-center p-2">
+             <GroupIcon/>
+         </div>
+         <div class="iteminforeserva-texto">
+             <p>Aforo:</p>
+             <p>5</p>
+         </div>
+       </span>
+       <span class="continfoReserva--item">
+         <div class="iteminforeserva-icono rounded-md grid place-content-center p-2">
+             <CubeIcon/>
+         </div>
+         <div class="iteminforeserva-texto">
+             <p>Espacio:</p>
+             <p>Sala 1</p>
+         </div>
+       </span>
+      </div>
+      <button id="btnCloseConfirmReserva" class="w-full rounded-md h-full">Listo</button>
+    </div>
+   </section>
+</dialog>
+<style>
+  #modalConfirmReservation{
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  }
+  .continfoReservas{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .continfoReserva--item{
+    display: flex;
+    background-color: rgba(50, 64, 83, 0.4);
+    border:1px solid rgba(50, 64, 83, 0.6);;
+    gap: .8rem;
+    padding: 6px;
+    border-radius: 8px;
+  }
+  .iteminforeserva-texto p:first-child{
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: #cbd5e1;
+  }
+  .iteminforeserva-texto p:last-child{
+    font-size: .9rem;
+    line-height: 1.25rem;
+    color: white;
+  }
+  .iteminforeserva-icono{
+    width: 44px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    color: #cbd5e1;
+    background: linear-gradient(125deg, #4a5861f5 10%, #33415599 50%) padding-box, linear-gradient(125deg, #cbd5e146, #cbd5e13b) border-box;
+  }
+  #btnCloseConfirmReserva{
+    background: #33415599;
+    background: linear-gradient(#33415599,#33415599);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    transition: all ease-in 200ms;
+    color: white;
+  }
+  #btnCloseConfirmReserva:hover{
+    border: 2px solid #84cc1699;
+    color: #84cc16;
+    font-weight: 800;
+    background: linear-gradient(125deg, #84cc1634, #33415599 50%);
+  }
+      
+</style>

@@ -1,39 +1,38 @@
 ---
-import Layout from "../layouts/Layout.astro"
-import Desk from "public/icons/desk.astro"
-import Photo from "public/icons/photo.astro"
+import Layout from "@layouts/Layout.astro"
+import Photo from "@icons/PhotoIcon.astro"
+import Desk from "@icons/DeskIcon.astro"
+import ReservasModal from "@components/ReservasModal.astro"
+import ConfReservaModal from "@components/ConfReservaModal.astro"
 ---
 
 <Layout title="Aulas - Gestion Biblioteca">
     <main class="bg-slate-900 h-screen w-full flex justify-center overflow-y-auto">
         <section class="max-w-screen-xl w-full pt-10" transition:name="contAula">
-            <div class="text-white/70 mb-6 font-medium">
+            <!-- preheader -->
+            <nav class="text-white/70 mb-6 font-medium">
                 <a href="./" class="text-sm mb-6 hover:underline">Inicio</a>
                 >
-                <a href="" class="text-white text-sm mb-6 hover:underline">Aulas</a>
-            </div>
+                <a href="Aulas" class="text-white text-sm mb-6 hover:underline">Aulas</a>
+            </nav>
             <header>
                 <h1 class="text-4xl text-white font-bold tracking-tight" transition:name="nameAula">Aulas</h1>
                 <p class="font-medium text-white/70 text-balance">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum nam quas quo velit voluptate numquam vel facilis, quasi sequi placeat.</p>
             </header>
-            <section class="w-full flex gap-6 mt-10">
+            <section class="w-full flex gap-8 mt-10">
                 <aside class="flex flex-col gap-6">
                     <p class="text-lg font-bold text-white">Salas</p>
-                    <div class="sala-boton w-[200px] aspect-square grid place-content-center rounded-md border bg-slate-800 border-white text-white font-semibold gap-2">
+                    <div class="sala-boton active w-[180px] aspect-square grid place-content-center rounded-md font-semibold gap-2">
                         <Desk class="w-12 h-12"/>
                         <span class="font-semibold">Sala 1</span>
                     </div>
-                    <div class="sala-boton w-[200px] aspect-square grid place-content-center rounded-md border border-white text-white font-semibold gap-2">
+                    <div class="sala-boton w-[180px] aspect-square grid place-content-center rounded-md font-semibold gap-2">
                         <Desk class="w-12 h-12"/>
                         <span class="font-semibold">Sala 2</span>
                     </div>
-                    <div class="sala-boton w-[200px] aspect-square grid place-content-center rounded-md border border-white text-white font-semibold gap-2">
+                    <div class="sala-boton w-[180px] aspect-square grid place-content-center rounded-md font-semibold gap-2">
                         <Desk class="w-12 h-12"/>
                         <span class="font-semibold">Sala 3</span>
-                    </div>
-                    <div class="sala-boton w-[200px] aspect-square grid place-content-center rounded-md border border-white text-white font-semibold gap-2">
-                        <Desk class="w-12 h-12"/>
-                        <span class="font-semibold">Sala 4</span>
                     </div>
                 </aside>
                 <!-- Contenedor Derecho Informacion -->
@@ -79,13 +78,13 @@ import Photo from "public/icons/photo.astro"
                                     <p>8:00 a 10:00</p>
                                     <p class="w-28 text-center bg-red-700/40 font-semibold  rounded-full px-4 py-1">Ocupado</p>
                                 </div>
-                                <div class="bg-slate-800 rounded-lg flex justify-between items-center p-2 px-4">
+                                <div data-btn-reserva class="bg-slate-800 rounded-lg flex justify-between items-center p-2 px-4">
                                     <p>10:00 a 12:00</p>
-                                    <p class="w-28 text-center font-bold bg-green-700/50 rounded-lg p-1 px-4">Reservar</p>
+                                    <p class="select-none cursor-pointer w-28 text-center font-bold bg-green-700/50 rounded-lg p-1 px-4">Reservar</p>
                                 </div>
-                                <div class="bg-slate-800 rounded-lg flex justify-between items-center p-2 px-4">
+                                <div class="bg-slate-800 rounded-lg flex justify-between items-center p-2 px-4 ">
                                     <span>12:00 a 2:00</span>
-                                    <p class="w-28 text-center font-bold bg-green-700/50 rounded-lg p-1 px-4">Reservar</p>
+                                    <p class="select-none cursor-pointer w-28 text-center font-bold bg-green-700/50 rounded-lg p-1 px-4 ">Reservar</p>
                                 </div>
                                 <div class="bg-slate-800 rounded-lg flex justify-between items-center p-2 px-4">
                                     <span>2:00 a 4:00</span>
@@ -109,10 +108,28 @@ import Photo from "public/icons/photo.astro"
                 </div>
             </section>
         </section>
+        <ReservasModal data-modal-reserva/>
+        <ConfReservaModal data-modal-confirma-reserva/>
     </main>
 </Layout>
 <style is:global>
-
+    .sala-boton{
+        color: rgba(255, 255, 255, 0.4);
+        background-color: rgba(29, 40, 58, 0.1);
+        cursor: pointer;
+        transition: all ease-in 300ms;
+    }
+    .sala-boton:hover{
+        color: rgba(255, 255, 255, 0.7);
+        background-color: rgba(29, 40, 58, 0.3);
+    }
+    .sala-boton.active{
+        color: white;
+        /* background-color: #1d283a99; */
+        border: 1.5px solid transparent;
+        background: linear-gradient(125deg, #1d283a99,#1d283ab9) padding-box, linear-gradient(125deg, #202c3f, #35465e) border-box;
+        box-shadow: 0 2px 30px #3341551a;
+    }
     .infosala-contgrid-photos{
         display: grid;
         grid-template-columns: repeat(3,1fr);
@@ -132,10 +149,12 @@ import Photo from "public/icons/photo.astro"
     .infosala-contgrid-photos--item:nth-child(3){
         grid-column: 2/4;
     }
+
+
+    /* Estilos para la barra de desplazamiento lateral */
     ::-webkit-scrollbar {
 		width: 6px; 
 	}
-
 	::-webkit-scrollbar-track {
 		background: #12141B
 	}
@@ -146,3 +165,4 @@ import Photo from "public/icons/photo.astro"
 		background: rgba(255, 255, 255, 0.5);
 	}
 </style>
+<script src="../scripts/Aula.js"></script>

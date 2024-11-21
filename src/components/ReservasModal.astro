@@ -1,0 +1,118 @@
+---
+import CubeIcon from "@icons/CubeIcon.astro"
+import GroupIcon from "@icons/GroupIcon.astro"
+import ClockCalendarIcon from "@icons/ClockCalendarIcon.astro"
+import CalendarMonth from "@icons/CalendarMonth.astro"
+---
+
+<dialog id="modalReservation" class="fixed inset-0 rounded-lg backdrop:bg-slate-900/70 backdrop:backdrop-blur-md" transition:animate="fade">
+    <section class="contmodal flex flex-col gap-4 aspect-video rounded-lg p-5">
+        <h2 class="text-center font-bold text-xl">¿Desea confirmar su reserva?</h2>
+        <p class="-mb-1.5">Detalle de la reserva</p>
+        <div class="continfoReserva">
+            <span class="continfoReserva--item">
+                <div class="item-conticon grid place-content-center">
+                    <CalendarMonth />
+                </div>
+                <div class="">
+                    <p>Día:</p>
+                    <p>18 de Noviembre</p>
+                </div>
+            </span>
+            <span class="continfoReserva--item">
+                <div class="item-conticon grid place-content-center">
+                    <ClockCalendarIcon />
+                </div>
+                <div class="">
+                    <p>Hora:</p>
+                    <p>10:00 a 12:00</p>
+                </div>
+            </span>
+            <span class="continfoReserva--item">
+                <div class="item-conticon grid place-content-center">
+                    <GroupIcon/>
+                </div>
+                <div class="">
+                    <p>Aforo:</p>
+                    <p>5</p>
+                </div>
+            </span>
+            <span class="continfoReserva--item">
+                <div class="item-conticon grid place-content-center">
+                    <CubeIcon/>
+                </div>
+                <div class="">
+                    <p>Espacio:</p>
+                    <p>Sala 1</p>
+                </div>
+            </span>
+        </div>
+        <hr class="border-slate-500/70">
+        <div class="flex justify-end gap-4">
+            <button id="btnCloseModal" class="btnmodalreserva outline-none text-white font-medium text-sm bg-slate-400 w-36 p-2 rounded-md">Cancelar</button>
+            <button id="btnConfirmReserva" class="btnmodalreserva outline-none text-white font-medium text-sm bg-slate-400 w-36 p-2 rounded-md">Sí, Reservar</button>
+        </div>
+    </section>
+</dialog>
+<style>
+    #modalReservation{
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        background: transparent;
+    }
+    .continfoReserva{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 1rem;
+    }
+    .continfoReserva--item{
+        display: flex;
+        gap: 0.8rem;
+        background-color: rgba(50, 64, 83, 0.4);
+        border:1px solid rgba(50, 64, 83, 0.6);;
+        border-radius: 8px;
+        padding: 0.5rem 0.6rem;
+        width: 212px;
+    }
+    .continfoReserva--item div:last-child{
+        flex-grow: 1;
+    }
+    .continfoReserva--item div p{
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+    .continfoReserva--item div p:last-child{
+        color: #cbd5e1;
+        font-weight: 500;
+        text-align: end;
+    }
+    .contmodal{
+        background: linear-gradient(125deg, #1e293bee,#1e293bcc) padding-box, linear-gradient(125deg, #60a5fa46, #1e293bcc) border-box;      
+		border: 1px solid transparent;
+        color: white;
+    }
+    .btnmodalreserva{
+        background: #33415599;
+        background: linear-gradient(#33415599,#33415599);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        transition: all ease-in 200ms;
+    }
+    #btnCloseModal:hover{
+        border: 2px solid #ef444499;
+        color: #eb2929e1;
+        font-weight: 800;
+        background: linear-gradient(125deg, #ef44441a 10%, #33415599 50%);
+    }
+    #btnConfirmReserva:hover{
+        border: 2px solid #4d7c0f99;
+        color: #619e12e3;
+        font-weight: 800;
+        background: linear-gradient(125deg, #4d7c0f1a 10%, #33415599 50%);
+    }
+    .item-conticon{
+        border: 1px solid transparent;
+        border-radius: 6px;
+        color: #cbd5e1;
+        padding: 0.5rem;
+        background: linear-gradient(125deg, #4a5861f5 10%, #33415599 50%) padding-box, linear-gradient(125deg, #cbd5e146, #cbd5e13b) border-box;
+    }
+</style>
