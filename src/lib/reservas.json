@@ -1,0 +1,23 @@
+[
+    {
+      "Id_Reserva": 1,
+      "Id_Usuario": 1,
+      "Id_Sala": 101,
+      "Cantidad_de_Espacio": 5,
+      "Fecha": "2024-11-21",
+      "Hora_Inicio": "10:00",
+      "Hora_Fin": "12:00",
+      "Estado": "Confirmada"
+    },
+    {
+      "Id_Reserva": 2,
+      "Id_Usuario": 2,
+      "Id_Sala": 102,
+      "Cantidad_de_Espacio": 8,
+      "Fecha": "2024-11-22",
+      "Hora_Inicio": "14:00",
+      "Hora_Fin": "16:00",
+      "Estado": "Pendiente"
+    }
+  ]
+  

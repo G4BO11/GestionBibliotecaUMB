@@ -1,0 +1,24 @@
+[
+    {
+      "Id_Sala": 101,
+      "Nombre": "Sala de Estudio A",
+      "Descripcion": "Sala con capacidad para 10 personas",
+      "Capacidad": 10,
+      "Ubicacion": "Edificio A, Piso 2"
+    },
+    {
+      "Id_Sala": 102,
+      "Nombre": "Sala de Reuniones",
+      "Descripcion": "Sala equipada con proyector y pizarra",
+      "Capacidad": 20,
+      "Ubicacion": "Edificio B, Piso 1"
+    },
+    {
+      "Id_Sala": 103,
+      "Nombre": "Sala de Reuniones",
+      "Descripcion": "Sala equipada con proyector, pizarra y 30 sillas",
+      "Capacidad": 20,
+      "Ubicacion": "Edificio B, Piso 3"
+    }
+  ]
+  

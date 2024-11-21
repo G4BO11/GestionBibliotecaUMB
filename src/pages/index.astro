@@ -1,5 +1,6 @@
 ---
 import Layout from '@layouts/Layout.astro';
+import ChatBot from '@components/chatbot/chatbot';
 ---
 <Layout title="Gestión de Biblioteca UNX">
 	<main class="bg-slate-900 flex flex-col w-full h-screen">
@@ -20,6 +21,7 @@ import Layout from '@layouts/Layout.astro';
 				<h2 class="font-bold text-slate-300">Otros..</h2>
 			</aside>			
 		</main>
+		<ChatBot client:load/>
 	</main>	
 </Layout>
 <style>
