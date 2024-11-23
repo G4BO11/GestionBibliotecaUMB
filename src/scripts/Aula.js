@@ -1,3 +1,4 @@
+   document.addEventListener("astro:page-load", ()=>{
     const btnCloseModal = document.getElementById("btnCloseModal")
     // const btnCrearReserva = document.getElementById("btnReserva")
     const btnConfirmReserva = document.getElementById("btnConfirmReserva")
@@ -18,5 +19,5 @@
         modalreserva.close();
         modalConfirmreserva.showModal();
     })
-    console.log("funciona xd")
+   })
    
