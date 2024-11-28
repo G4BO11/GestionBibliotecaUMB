@@ -1,14 +1,20 @@
    document.addEventListener("astro:page-load", ()=>{
     const btnCloseModal = document.getElementById("btnCloseModal")
-    // const btnCrearReserva = document.getElementById("btnReserva")
+    //const btnCrearReserva = document.getElementById("btnReserva")
+
+    const btnsCrearReserva = document.querySelectorAll('.btn-crear-reserva');
     const btnConfirmReserva = document.getElementById("btnConfirmReserva")
     const btnCloseConfirmReserva = document.getElementById("btnCloseConfirmReserva")
     const modalreserva = document.getElementById("modalReservation")
     const modalConfirmreserva = document.getElementById("modalConfirmReservation")
-    const btnopen = document.querySelector('[data-btn-reserva]')
-    btnopen.addEventListener('click', ()=>{
-        modalreserva.showModal();
-    })
+
+
+    btnsCrearReserva.forEach( btns =>{
+        btns.addEventListener('click', ()=>{
+            modalreserva.showModal();
+        })
+    })    
+    
     btnCloseModal?.addEventListener('click',()=>{
         modalreserva.close();
     })

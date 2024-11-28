@@ -1,0 +1,77 @@
+---
+import {db,eq, tabAulas} from 'astro:db'
+import ItemReserva from "@components/ItemReserva.astro"
+import Photo from "@icons/PhotoIcon.astro"
+const id = String(Astro.params)
+
+// const salas = await db.select().from(tabAulas).where(eq(tabAulas.id_sala, id))
+const salas = await db.select().from(tabAulas).where(eq(tabAulas.id_sala, id))
+
+---
+<div class="w-full flex flex-wrap gap-6 ">
+    <h4 class="text-lg font-bold text-white">Información Sala</h4>                    
+    <div class="rounded-md min-h-60 px-5 py-5">
+        <!-- seccion informacion de la sala -->
+        {salas.map((aula)=>(
+        <section class="text-white flex flex-col gap-4">
+            <h3 class="text-3xl font-bold">{aula.nombre}</h3>
+            <div class="infosala-textoinfo">
+                <span class="flex gap-2">
+                    <p class="font-semibold">Descripcion:</p>
+                    <p class="text-white/75">{aula.descripcion}</p>
+                </span>
+                <span class="flex gap-2">
+                    <p class="font-semibold">Cantidad personas:</p>
+                    <p class="text-white/75">{aula.capacidad}</p>
+                </span>
+                <span class="flex gap-2">
+                    <p class="font-semibold">Maximo tiempo de sala: </p>
+                    <p class="text-white/75">2 horas</p>
+                </span>
+                <span class="flex gap-2">
+                    <p class="font-semibold">Ubicacion: </p>
+                    <p class="text-white/75">{aula.ubicacion}</p>
+                </span>
+            </div>
+            <!-- Container Apartado fotos establecimiento -->
+            <div class="infosala-contgrid-photos">
+                <div class="infosala-contgrid-photos--item h-40 rounded-xl bg-slate-300 text-slate-800"><Photo/></div>
+                <div class="infosala-contgrid-photos--item h-40 rounded-xl bg-slate-300 text-slate-800"><Photo/></div>
+                <div class="infosala-contgrid-photos--item h-40 rounded-xl bg-slate-300 text-slate-800"><Photo/></div>
+            </div>
+        </section>
+        ))}
+    </div>
+    <!-- Reservas -->
+    <div class="bg-slate-800/30 rounded-lg min-h-80 w-auto grow p-5">
+        <h4 class="text-white mb-2 font-semibold">Reservas</h4>
+        <div class="text-white gap-2 flex flex-col">
+            <div class="flex flex-col gap-2">
+                <ItemReserva fecha="17 de Octubre" hora_inicio="10:00" hora_final="12:00" estado="Libre"/>
+                <ItemReserva fecha="30 de Octubre" hora_inicio="12:00" hora_final="02:00" estado="Ocupado"/>
+                <ItemReserva fecha="10 de Noviembre" hora_inicio="08:00" hora_final="10:00" estado="Libre"/>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .infosala-contgrid-photos{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 1rem;
+    }
+    .infosala-contgrid-photos--item{
+        /* se pone para que la imagen se centre xd */
+        display: grid;
+        place-items: center;
+    }
+    .infosala-contgrid-photos--item:nth-child(1){
+        grid-column: 1/4;
+    }
+    .infosala-contgrid-photos--item:nth-child(2){
+        grid-column: 1/2;
+    }
+    .infosala-contgrid-photos--item:nth-child(3){
+        grid-column: 2/4;
+    }
+</style>

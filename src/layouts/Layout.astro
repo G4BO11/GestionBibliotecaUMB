@@ -27,6 +27,19 @@ const { title } = Astro.props;
 	*{
 		font-family: 'Zed Sans Extended';
 	}
+    /* Estilos para la barra de desplazamiento lateral */
+    ::-webkit-scrollbar {
+		width: 6px; 
+	}
+	::-webkit-scrollbar-track {
+		background: #12141B
+	}
+
+	::-webkit-scrollbar-thumb {
+		margin-right: 5px;
+		border-radius: 5px;
+		background: rgba(255, 255, 255, 0.5);
+	}
 </style>
 <!-- Fuentes Source -->
  <style is:global>

@@ -1,9 +1,12 @@
 ---
 import Layout from "@layouts/Layout.astro"
-import Photo from "@icons/PhotoIcon.astro"
-import Desk from "@icons/DeskIcon.astro"
 import ReservasModal from "@components/ReservasModal.astro"
 import ConfReservaModal from "@components/ConfReservaModal.astro"
+import BotonSala from "@components/BotonSala.astro"
+import ContSala from "@sections/sala/ContSala.astro"
+import {db, eq, tabAulas} from 'astro:db'
+
+const aulaE = await db.select().from(tabAulas);
 ---
 
 <Layout title="Aulas - Gestion Biblioteca">
@@ -22,147 +25,15 @@ import ConfReservaModal from "@components/ConfReservaModal.astro"
             <section class="w-full flex gap-8 mt-10">
                 <aside class="flex flex-col gap-6">
                     <p class="text-lg font-bold text-white">Salas</p>
-                    <div class="sala-boton active w-[180px] aspect-square grid place-content-center rounded-md font-semibold gap-2">
-                        <Desk class="w-12 h-12"/>
-                        <span class="font-semibold">Sala 1</span>
-                    </div>
-                    <div class="sala-boton w-[180px] aspect-square grid place-content-center rounded-md font-semibold gap-2">
-                        <Desk class="w-12 h-12"/>
-                        <span class="font-semibold">Sala 2</span>
-                    </div>
-                    <div class="sala-boton w-[180px] aspect-square grid place-content-center rounded-md font-semibold gap-2">
-                        <Desk class="w-12 h-12"/>
-                        <span class="font-semibold">Sala 3</span>
-                    </div>
+                    <BotonSala nombre="Sala 1" isActive/>
+                    <BotonSala nombre="Sala 2"/>
+                    <BotonSala nombre="Sala 3"/>
                 </aside>
-                <!-- Contenedor Derecho Informacion -->
-                <div class="w-full flex flex-wrap gap-6 ">
-                    <h4 class="text-lg font-bold text-white">Información Sala</h4>                    
-                    <div class="rounded-md min-h-60 px-5 py-5">
-                        <!-- seccion informacion de la sala -->
-                        <section class="text-white flex flex-col gap-4">
-                            <h3 class="text-3xl font-bold">Sala 1</h3>
-                            <div class="infosala-textoinfo">
-                                <span class="flex gap-2">
-                                    <p class="font-semibold">Descripcion:</p>
-                                    <p class="text-white/75">Lorem ipsum dolor sit amet consectetur adipisicing elit. A ea nam, minus aliquid assumenda molestiae voluptatibus quis sit? Nemo, officia.</p>
-                                </span>
-                                <span class="flex gap-2">
-                                    <p class="font-semibold">Cantidad personas:</p>
-                                    <p class="text-white/75">5 max</p>
-                                </span>
-                                <span class="flex gap-2">
-                                    <p class="font-semibold">Maximo tiempo de sala: </p>
-                                    <p class="text-white/75">2 horas aprox</p>
-                                </span>
-                            </div>
-                            <!-- Container Apartado fotos establecimiento -->
-                            <div class="infosala-contgrid-photos">
-                                <div class="infosala-contgrid-photos--item h-40 rounded-xl bg-slate-300 text-slate-800"><Photo/></div>
-                                <div class="infosala-contgrid-photos--item h-40 rounded-xl bg-slate-300 text-slate-800"><Photo/></div>
-                                <div class="infosala-contgrid-photos--item h-40 rounded-xl bg-slate-300 text-slate-800"><Photo/></div>
-                            </div>
-                        </section>
-                    </div>
-                    <!-- Calendario -->
-                    <div class="border border-white rounded-lg h-80 w-1/3 grid place-content-center text-white">
-                        <h4>Calendario</h4>
-                    </div>
-                    <!-- Reservas -->
-                    <div class="border border-white rounded-lg min-h-80 w-auto grow p-5">
-                        <h4 class="text-white mb-2 font-semibold">Reservas</h4>
-                        <div class="text-white gap-2 flex flex-col">
-                            <div class="flex flex-col gap-2">
-                                <p>Lunes, 18 Noviembre</p>
-                                <div class="bg-slate-800 rounded-lg flex justify-between items-center p-2 px-4">
-                                    <p>8:00 a 10:00</p>
-                                    <p class="w-28 text-center bg-red-700/40 font-semibold  rounded-full px-4 py-1">Ocupado</p>
-                                </div>
-                                <div data-btn-reserva class="bg-slate-800 rounded-lg flex justify-between items-center p-2 px-4">
-                                    <p>10:00 a 12:00</p>
-                                    <p class="select-none cursor-pointer w-28 text-center font-bold bg-green-700/50 rounded-lg p-1 px-4">Reservar</p>
-                                </div>
-                                <div class="bg-slate-800 rounded-lg flex justify-between items-center p-2 px-4 ">
-                                    <span>12:00 a 2:00</span>
-                                    <p class="select-none cursor-pointer w-28 text-center font-bold bg-green-700/50 rounded-lg p-1 px-4 ">Reservar</p>
-                                </div>
-                                <div class="bg-slate-800 rounded-lg flex justify-between items-center p-2 px-4">
-                                    <span>2:00 a 4:00</span>
-                                    <p class="w-28 text-center font-bold bg-green-700/50 rounded-lg p-1 px-4">Reservar</p>
-                                </div>
-                                <div class="bg-slate-800 rounded-lg flex justify-between items-center p-2 px-4">
-                                    <span>4:00 a 6:00</span>
-                                    <p class="w-28 text-center font-bold bg-green-700/50 rounded-lg p-1 px-4">Reservar</p>
-                                </div>
-                                <div class="bg-slate-800 rounded-lg flex justify-between items-center p-2 px-4">
-                                    <span>6:00 a 8:00</span>
-                                    <p class="w-28 text-center font-bold bg-green-700/50 rounded-lg p-1 px-4">Reservar</p>
-                                </div>
-                                <div class="bg-slate-800 rounded-lg flex justify-between items-center p-2 px-4">
-                                    <span>8:00 a 10:00</span>
-                                    <p class="w-28 text-center font-bold bg-green-700/50 rounded-lg p-1 px-4">Reservar</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <ContSala />
             </section>
         </section>
-        <ReservasModal data-modal-reserva/>
-        <ConfReservaModal data-modal-confirma-reserva/>
+        <ReservasModal />
+        <ConfReservaModal />
     </main>
 </Layout>
-<style is:global>
-    .sala-boton{
-        color: rgba(255, 255, 255, 0.4);
-        background-color: rgba(29, 40, 58, 0.1);
-        cursor: pointer;
-        transition: all ease-in 300ms;
-    }
-    .sala-boton:hover{
-        color: rgba(255, 255, 255, 0.7);
-        background-color: rgba(29, 40, 58, 0.3);
-    }
-    .sala-boton.active{
-        color: white;
-        /* background-color: #1d283a99; */
-        border: 1.5px solid transparent;
-        background: linear-gradient(125deg, #1d283a99,#1d283ab9) padding-box, linear-gradient(125deg, #202c3f, #35465e) border-box;
-        box-shadow: 0 2px 30px #3341551a;
-    }
-    .infosala-contgrid-photos{
-        display: grid;
-        grid-template-columns: repeat(3,1fr);
-        gap: 1rem;
-    }
-    .infosala-contgrid-photos--item{
-        /* se pone para que la imagen se centre xd */
-        display: grid;
-        place-items: center;
-    }
-    .infosala-contgrid-photos--item:nth-child(1){
-        grid-column: 1/4;
-    }
-    .infosala-contgrid-photos--item:nth-child(2){
-        grid-column: 1/2;
-    }
-    .infosala-contgrid-photos--item:nth-child(3){
-        grid-column: 2/4;
-    }
-
-
-    /* Estilos para la barra de desplazamiento lateral */
-    ::-webkit-scrollbar {
-		width: 6px; 
-	}
-	::-webkit-scrollbar-track {
-		background: #12141B
-	}
-
-	::-webkit-scrollbar-thumb {
-		margin-right: 5px;
-		border-radius: 5px;
-		background: rgba(255, 255, 255, 0.5);
-	}
-</style>
 <script src="../scripts/Aula.js"></script>
